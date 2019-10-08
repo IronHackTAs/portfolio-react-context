@@ -13,7 +13,6 @@ const session = require('./configs/session.config');
 const cors = require('./configs/cors.config');
 
 const authRouter = require('./routes/auth.routes');
-const usersRouter = require('./routes/users.routes');
 
 const app = express();
 
@@ -27,7 +26,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', authRouter);
-app.use('/users', usersRouter);
 
 // 404
 app.use(function (req, res, next) {
