@@ -1,0 +1,9 @@
+$colors: (
+  textHeader: #ffffff,
+  gradientTop: #FFCCE8, 
+  gradientBottom: #FFA015
+);
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
