@@ -305,7 +305,7 @@ export default function HeaderImg() {
                         <stop offset="0.7798" stopColor="#FFC117" />
                     </linearGradient>
                 </defs>
-            </svg>r
+            </svg>
         </div>
     )
 }

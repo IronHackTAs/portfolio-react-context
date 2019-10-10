@@ -7,7 +7,7 @@ export default class Navbar extends Component {
             <nav className="navbar capitalize">
                 <ul>
                     <li><NavLink to="/login">login</NavLink></li>
-                    <li><NavLink to="/register">signup</NavLink></li>
+                    <li><NavLink to="/sign-up">signup</NavLink></li>
                 </ul>
             </nav>
         )

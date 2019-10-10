@@ -1,2 +1,7 @@
 $main-family-font: "Lato", sans-serif;
-$gradient: linear-gradient(180deg, color(gradientTop) -24.02%, color(gradientBottom) 130.76%);
+$gradient: linear-gradient(
+  180deg,
+  color(gradientTop) -24.02%,
+  color(gradientBottom) 130.76%
+);
+// $margin: 20px;
