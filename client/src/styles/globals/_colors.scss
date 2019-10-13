@@ -1,7 +1,10 @@
 $colors: (
-  textHeader: #ffffff,
+  textHeader: #FFFFFF,
+  textArticle: #585857,
   gradientTop: #FFCCE8, 
-  gradientBottom: #FFA015
+  gradientBottom: #FFA015,
+  button: #FEC078,
+  backgroundSection: #E5E5E5
 );
 
 @function color($color-name) {

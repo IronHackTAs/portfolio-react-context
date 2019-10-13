@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { projectsService } from '../../../services'
+import Article from '../../atoms/home/Article'
 
 export default class Section extends Component {
     state = {
@@ -16,9 +17,11 @@ export default class Section extends Component {
 
     render() {
         return (
-            <div>
-
-            </div>
+            <section className="section-home">
+                {
+                    this.state.projects.map(data => <Article key={data.id} project={data} />)
+                }
+            </section>
         )
     }
 }
