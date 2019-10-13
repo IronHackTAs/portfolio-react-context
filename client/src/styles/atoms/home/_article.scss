@@ -25,12 +25,13 @@
         font-weight: 300;
       }
     }
-    button {
+    a {
       color: color(textArticle);
       background-color: color(button);
       max-width: 50%;
       border-radius: 5px;
-      padding: 15px;
+      text-align: center;
+      padding: 15px 0;
     }
   }
 }

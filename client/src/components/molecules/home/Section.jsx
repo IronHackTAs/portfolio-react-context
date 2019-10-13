@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { projectsService } from '../../../services'
 import Article from '../../atoms/home/Article'
+import { withProjectsConsumer } from '../../../contexts/ProjectsStore';
 
-export default class Section extends Component {
+class Section extends Component {
     state = {
         projects: []
     }
@@ -12,7 +13,8 @@ export default class Section extends Component {
     }
 
     async getProjects() {
-        this.setState({ ...this.state, projects: await projectsService.getProjects() })
+        const projects = await projectsService.getProjects();
+        this.setState({ ...this.state, projects: projects }, () => this.props.handleGetProjects(projects))
     }
 
     render() {
@@ -25,3 +27,5 @@ export default class Section extends Component {
         )
     }
 }
+
+export default withProjectsConsumer(Section)

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Article = ({ project }) => {
     return (
@@ -9,7 +10,7 @@ const Article = ({ project }) => {
             <div>
                 <h3>{project.title}</h3>
                 <p>{project.content}</p>
-                <button><span className="capitalize">ver</span> proyecto</button>
+                <Link to={`/project/${project.id}`} ><span className="capitalize">ver</span> proyecto</Link>
             </div>
         </article>
     )

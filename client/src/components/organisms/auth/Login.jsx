@@ -50,7 +50,6 @@ class Login extends Component {
 
   handleBlur = (event) => {
     const { name } = event.target;
-    console.log(name)
     this.setState({
       touch: {
         ...this.state.touch,
@@ -98,23 +97,19 @@ class Login extends Component {
     }
 
     return (
-      <div >
-        <div >
-          <form style={{ 'marginTop': '200px' }} onSubmit={this.handleSubmit}>
-            <div>
-              <input type="text" className={`form-control ${touch.username && errors.username && 'is-invalid'}`} name="username" placeholder="username" onChange={this.handleChange} value={user.username} onBlur={this.handleBlur} />
-              <div className="invalid-feedback">{!!touch.username? errors.username: ""}</div>
-            </div>
-            <div>
-              <input type="password" className={`form-control ${touch.password && errors.password && 'is-invalid'}`} name="password" placeholder="Password" onChange={this.handleChange} value={user.password} onBlur={this.handleBlur} />
-              <div className="invalid-feedback">{!!touch.password ? errors.password: ""}</div>
-            </div>
-            <div>
-              <button type="submit" disabled={!this.isValid()}>Login</button>
-            </div>
-          </form>
+      <form onSubmit={this.handleSubmit}>
+        <div>
+          <input type="text" className={`form-control ${touch.username && errors.username && 'is-invalid'}`} name="username" placeholder="username" onChange={this.handleChange} value={user.username} onBlur={this.handleBlur} />
+          <div className="invalid-feedback">{!!touch.username ? errors.username : ""}</div>
         </div>
-      </div>
+        <div>
+          <input type="password" className={`form-control ${touch.password && errors.password && 'is-invalid'}`} name="password" placeholder="Password" onChange={this.handleChange} value={user.password} onBlur={this.handleBlur} />
+          <div className="invalid-feedback">{!!touch.password ? errors.password : ""}</div>
+        </div>
+        <div>
+          <button type="submit" disabled={!this.isValid()}>Login</button>
+        </div>
+      </form>
     );
   }
 }
