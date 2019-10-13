@@ -26,6 +26,7 @@ module.exports.authenticate = (req, res, next) => {
 }
 
 module.exports.logout = (req, res, next) => {
+  console.log('hola')
   req.logout();
   res.status(204).json();
 }

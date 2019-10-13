@@ -1,14 +1,13 @@
 .navbar {
-  position: absolute;
-  top: 0;
-  width: 100%;
+  max-width: $mainWidth;
+  margin: $mainMargin;
   height: 100px;
   background: transparent;
   display: grid;
   align-content: center;
   z-index: 1;
   ul {
-    padding: 0 80px;
+    padding: 0 $sidesPadding;
     justify-self: end;
     display: grid;
     grid-auto-flow: column;

@@ -6,8 +6,9 @@ const authenticate = (user) => http.post('/authenticate', user)
 const register = (user) => http.post('/register', user)
   .then(response => response.data);
 
-const logout = () => http.post('/logout')
+const logout = () => http.get('/logout')
   .then(response => response.data);
+
 
 export default {
   authenticate,

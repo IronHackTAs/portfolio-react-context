@@ -13,13 +13,13 @@ export default function App() {
       <header>
         <NavBar />
       </header>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/sign-up" component={Register} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/not-found" component={NotFound} />
-        <Redirect to="/not-found" />
-      </Switch>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/sign-up" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/not-found" component={NotFound} />
+          <Redirect to="/not-found" />
+        </Switch>
     </div>
   );
 }

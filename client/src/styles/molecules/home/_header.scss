@@ -2,34 +2,41 @@
   background: $gradient;
   width: 100%;
   height: 100vh;
-  padding: 50px 0;
-  display: grid;
-  grid-template-columns: 55% 45%;
-  section {
-    color: color(textHeader);
-    height: calc(100vh - 50px);
+  padding: $mainPadding;
+  #home-header-sections {
+    max-width: $mainWidth;
+    margin: $mainMargin;
     display: grid;
-    align-content: center;
-    h1 {
-      font-weight: 900;
-      opacity: 0.6;
-      span {
-        text-transform: lowercase;
+    grid-template-columns: repeat(2, 1fr);
+    section {
+      color: color(textHeader);
+      height: calc(100vh - 100px);
+      display: grid;
+      align-content: center;
+      h1 {
+        font-weight: 900;
+        opacity: 0.6;
+        span {
+          text-transform: lowercase;
+        }
+      }
+      h2 {
+        margin: 6px 0 40px 0;
+        span {
+          text-transform: uppercase;
+        }
       }
     }
-    h2 {
-      margin: 6px 0 40px 0;
-      span {
-        text-transform: uppercase;
-      }
+    #home-header-left {
+      padding-left: $sidesPadding;
     }
-  }
-  #home-header-left {
-    padding-left: 68px;
-  }
-  #home-header-right {
-    display: grid;
-    justify-items: end;
-    padding-right: 26px;
+    #home-header-right {
+      display: grid;
+      justify-items: end;
+      img {
+        width:90%;
+      }
+      padding-right: 26px;
+    }
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import authService from '../../../services/auth-service'
 import { withAuthConsumer } from '../../../contexts/AuthStore';
 
@@ -8,7 +8,7 @@ const validations = {
     let message;
     if (!value) {
       message = 'Username is required';
-    } 
+    }
     return message;
   },
   password: (value) => {
@@ -50,6 +50,7 @@ class Login extends Component {
 
   handleBlur = (event) => {
     const { name } = event.target;
+    console.log(name)
     this.setState({
       touch: {
         ...this.state.touch,
@@ -91,7 +92,7 @@ class Login extends Component {
   }
 
   render() {
-    const { isAuthenticated, errors, user, touch } =  this.state;
+    const { isAuthenticated, errors, user, touch } = this.state;
     if (isAuthenticated) {
       return (<Redirect to="/" />)
     }
@@ -99,19 +100,16 @@ class Login extends Component {
     return (
       <div >
         <div >
-          <form onSubmit={this.handleSubmit}>
-            <div >
-              <input type="text" className={`form-control ${touch.email && errors.email && 'is-invalid'}`} name="email" placeholder="Email" onChange={this.handleChange} value={user.username} onBlur={this.handleBlur} />
-              <div className="invalid-feedback">{errors.email}</div>
+          <form style={{ 'marginTop': '200px' }} onSubmit={this.handleSubmit}>
+            <div>
+              <input type="text" className={`form-control ${touch.username && errors.username && 'is-invalid'}`} name="username" placeholder="username" onChange={this.handleChange} value={user.username} onBlur={this.handleBlur} />
+              <div className="invalid-feedback">{!!touch.username? errors.username: ""}</div>
             </div>
-
-            <div >
-
+            <div>
               <input type="password" className={`form-control ${touch.password && errors.password && 'is-invalid'}`} name="password" placeholder="Password" onChange={this.handleChange} value={user.password} onBlur={this.handleBlur} />
-              <div className="invalid-feedback">{errors.password}</div>
+              <div className="invalid-feedback">{!!touch.password ? errors.password: ""}</div>
             </div>
-
-            <div >
+            <div>
               <button type="submit" disabled={!this.isValid()}>Login</button>
             </div>
           </form>

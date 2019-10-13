@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import authService from '../../../services/auth-service'
 
 const validations = {
@@ -94,18 +94,18 @@ export default class Register extends Component {
         }
         return (
             <div>
-                <form style={{'marginTop': '200px' }} onSubmit={this.handleSubmit}>
+                <form style={{ 'marginTop': '200px' }} onSubmit={this.handleSubmit}>
                     <div>
                         <div>
                             <div style={{ width: '42px' }}></div>
                         </div>
-                        <input type="text" name="username" placeholder="username" onChange={this.handleChange} onBlur={this.handleBlur} value={user.username} className={`form-control ${touch.name && errors.name && 'is-invalid'}`} />
-                        <div>{errors.name}</div>
+                        <input type="text" name="username" placeholder="username" onChange={this.handleChange} onBlur={this.handleBlur} value={user.username} className={`form-control ${touch.username && errors.username && 'is-invalid'}`} />
+                        <div>{!!touch.username? errors.username: ""}</div>
                     </div>
 
                     <div>
                         <input type="password" name="password" placeholder="password" onChange={this.handleChange} onBlur={this.handleBlur} value={user.password} className={`form-control ${touch.password && errors.name && 'is-invalid'}`} />
-                        <div>{errors.password}</div>
+                        <div>{!!touch.password ? errors.password: ""}</div>
                     </div>
 
                     <div>
