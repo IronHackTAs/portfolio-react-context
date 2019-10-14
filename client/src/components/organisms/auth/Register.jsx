@@ -30,13 +30,14 @@ export default class Register extends Component {
             password: validations.password(),
         },
         touch: {},
-        isRegistered: false
+        isRegistered: false,
+        showError: false
     }
 
     handleChange = (event) => {
         const { name, value } = event.target;
-        console.log('change ' + name, value)
         this.setState({
+            showError: false,
             user: {
                 ...this.state.user,
                 [name]: value
@@ -75,7 +76,8 @@ export default class Register extends Component {
                             touch: {
                                 ...errors,
                                 username: !errors && message
-                            }
+                            },
+                            showError: true
                         })
                     }
                 )
@@ -88,30 +90,22 @@ export default class Register extends Component {
     }
 
     render() {
-        const { isRegistered, errors, user, touch } = this.state;
+        const { isRegistered, errors, user, touch, showError } = this.state;
         if (isRegistered) {
             return (<Redirect to="/login" />)
         }
         return (
-            <div>
-                <form style={{ 'marginTop': '200px' }} onSubmit={this.handleSubmit}>
-                    <div>
-                        <div>
-                            <div style={{ width: '42px' }}></div>
-                        </div>
-                        <input type="text" name="username" placeholder="username" onChange={this.handleChange} onBlur={this.handleBlur} value={user.username} className={`form-control ${touch.username && errors.username && 'is-invalid'}`} />
-                        <div>{!!touch.username? errors.username: ""}</div>
+            <div className="auth-container">
+                <section>
+                    <div className="auth-form-container">
+                        <form onSubmit={this.handleSubmit}>
+                            <input type="text" className={!!touch.username && !!errors.username ? 'is-invalid' : ''} name="username" placeholder={!!touch.username ? errors.username : "username"} onChange={this.handleChange} value={user.username} onBlur={this.handleBlur} />
+                            <input type="password" className={`form-control ${touch.password && errors.password && 'is-invalid'}`} name="password" placeholder={!!touch.password ? errors.password : "password"} onChange={this.handleChange} value={user.password} onBlur={this.handleBlur} />
+                            <button type="submit" disabled={!this.isValid()}>Register</button>
+                        </form>
+                        <div ><p className={showError ? 'is-visible' : 'is-hide'}>{errors.username}</p></div>
                     </div>
-
-                    <div>
-                        <input type="password" name="password" placeholder="password" onChange={this.handleChange} onBlur={this.handleBlur} value={user.password} className={`form-control ${touch.password && errors.name && 'is-invalid'}`} />
-                        <div>{!!touch.password ? errors.password: ""}</div>
-                    </div>
-
-                    <div>
-                        <button type="submit" disabled={!this.isValid()}>Register</button>
-                    </div>
-                </form>
+                </section>
             </div>
         )
     }

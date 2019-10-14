@@ -1,7 +1,10 @@
 $colors: (
   textHeader: #FFFFFF,
   textArticle: #585857,
+  placeholder: lighten(#585857, 40%),
   gradientTop: #FFCCE8, 
+  gradientTopDark: darken(#FFCCE8, 7%), 
+  error: darken(#FFCCE8, 50%), 
   gradientBottom: #FFA015,
   button: #FEC078,
   backgroundSection: #E5E5E5

@@ -31,12 +31,15 @@ class Login extends Component {
       password: validations.password(),
     },
     touch: {},
-    isAuthenticated: false
+    isAuthenticated: false,
+    showError: false
   }
 
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
+      ...this.state,
+      showError: false,
       user: {
         ...this.state.user,
         [name]: value
@@ -53,7 +56,7 @@ class Login extends Component {
     this.setState({
       touch: {
         ...this.state.touch,
-        [name]: true
+        [name]: true,
       }
     })
   }
@@ -78,7 +81,8 @@ class Login extends Component {
               touch: {
                 ...errors,
                 password: !errors && message
-              }
+              },
+              showError: true
             })
           }
         )
@@ -91,25 +95,23 @@ class Login extends Component {
   }
 
   render() {
-    const { isAuthenticated, errors, user, touch } = this.state;
+    const { isAuthenticated, errors, user, touch, showError } = this.state;
     if (isAuthenticated) {
       return (<Redirect to="/" />)
     }
-
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
-          <input type="text" className={`form-control ${touch.username && errors.username && 'is-invalid'}`} name="username" placeholder="username" onChange={this.handleChange} value={user.username} onBlur={this.handleBlur} />
-          <div className="invalid-feedback">{!!touch.username ? errors.username : ""}</div>
-        </div>
-        <div>
-          <input type="password" className={`form-control ${touch.password && errors.password && 'is-invalid'}`} name="password" placeholder="Password" onChange={this.handleChange} value={user.password} onBlur={this.handleBlur} />
-          <div className="invalid-feedback">{!!touch.password ? errors.password : ""}</div>
-        </div>
-        <div>
-          <button type="submit" disabled={!this.isValid()}>Login</button>
-        </div>
-      </form>
+      <div className="auth-container">
+        <section>
+          <div className="auth-form-container">
+            <form onSubmit={this.handleSubmit}>
+              <input type="text" className={!!touch.username && !!errors.username ? 'is-invalid' : ''} name="username" placeholder={!!touch.username ? errors.username : "username"} onChange={this.handleChange} value={user.username} onBlur={this.handleBlur} />
+              <input type="password" className={`form-control ${touch.password && errors.password && 'is-invalid'}`} name="password" placeholder={!!touch.password ? errors.password : "password"} onChange={this.handleChange} value={user.password} onBlur={this.handleBlur} />
+              <button type="submit" disabled={!this.isValid()}>Login</button>
+            </form>
+            <div ><p className={showError ? 'is-visible' : 'is-hide'}>{errors.password}</p></div>
+          </div>
+        </section>
+      </div>
     );
   }
 }
