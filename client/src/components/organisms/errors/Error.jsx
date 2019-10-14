@@ -2,12 +2,12 @@ import React from 'react'
 
 
 const Error = ({ code, message }) => (
-  <div>
-    <div>
-      <div role="alert">
-        <strong>{code}</strong> {message}
+  <div className="error-container">
+    <section>
+      <div role="alert" className="error-inside-container">
+        <h2><strong>{code}</strong> - {message}</h2>
       </div>
-    </div>
+    </section>
   </div>
 )
 

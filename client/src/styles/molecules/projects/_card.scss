@@ -1,0 +1,30 @@
+.project-card {
+  background-color: color(textHeader);
+  border-radius: $mainRadius;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  color: color(textArticle);
+  height: 481px;
+  > div {
+    &:first-child {
+      display: grid;
+      justify-items: center;
+      align-content: center;
+      img {
+        max-width: 100%;
+      }
+    }
+    &:last-child {
+      display: grid;
+      align-content: center;
+      padding-right: 50px;
+      h3 {
+        font-weight: 900;
+      }
+      p {
+        margin: 20px 0 71px 0;
+        font-weight: 300;
+      }
+    }
+  }
+}

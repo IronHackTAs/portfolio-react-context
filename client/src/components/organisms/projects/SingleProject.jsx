@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withProjectsConsumer } from '../../../contexts/ProjectsStore';
+import Card from '../../molecules/projects/Card';
 
 class SingleProject extends Component {
     state = {
@@ -16,8 +17,12 @@ class SingleProject extends Component {
     render() {
         const { singleProject } = this.props;
         return (
-            <div>
-                <h2>hola</h2>
+            <div className="project-container">
+                <section>
+                    <div className="project-inside-container">
+                        <Card singleProject={singleProject} />
+                    </div>
+                </section>
             </div>
         )
     }

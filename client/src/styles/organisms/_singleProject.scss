@@ -1,0 +1,15 @@
+.project-container {
+  margin-top: -100px;
+  color: color(textArticle);
+  section {
+    height: 100vh;
+    background: $gradient;
+    padding: $mainPadding 0 0;
+    .project-inside-container {
+      height: 100%;
+      padding: 0 $sidesPadding;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

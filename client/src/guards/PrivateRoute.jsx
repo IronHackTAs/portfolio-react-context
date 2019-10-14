@@ -4,7 +4,6 @@ import { Redirect, Route } from 'react-router-dom';
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  console.log(rest)
   return (
     <AuthContext.Consumer>
       {({ isAuthenticated, user }) => (

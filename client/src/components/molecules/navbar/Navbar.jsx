@@ -17,7 +17,7 @@ class Navbar extends Component {
     const { user, isAuthenticated } = this.props;
     return (
       <nav className="navbar capitalize" >
-        <NavLink activeClassName="is-hide-navbar" to="/"><i className="fas fa-arrow-left"></i></NavLink>
+        <NavLink exact activeClassName="is-hide-navbar" to="/"><i className="fas fa-arrow-left"></i></NavLink>
         <ul>
           {!isAuthenticated() &&
             <Fragment>

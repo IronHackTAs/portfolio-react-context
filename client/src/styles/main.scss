@@ -13,10 +13,13 @@
 @import 'molecules/navbar/navbar';
 @import 'molecules/home/header';
 @import 'molecules/home/section';
+@import 'molecules/projects/card';
 
 // ORGANISMS
 @import 'organisms/home';
 @import 'organisms/auth';
+@import 'organisms/singleProject';
+@import 'organisms/errors/error';
 
 // PAGES
 @import 'pages/app';
