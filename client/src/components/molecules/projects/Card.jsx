@@ -6,7 +6,7 @@ const Card = ({ singleProject }) => {
             <div>
                 <img src={`../${singleProject.image}`} alt="" />
             </div>
-            <div>{console.log(singleProject.image)}
+            <div>
                 <h3>{singleProject.title}</h3>
                 <p>{singleProject.content}</p>
             </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import authService from '../../../services/auth-service'
+import { withAuthConsumer } from '../../../contexts/AuthStore';
 
 const validations = {
     username: (value) => {
@@ -19,7 +20,7 @@ const validations = {
     }
 }
 
-export default class Register extends Component {
+class Register extends Component {
     state = {
         user: {
             username: '',
@@ -30,7 +31,7 @@ export default class Register extends Component {
             password: validations.password(),
         },
         touch: {},
-        isRegistered: false,
+        isAuthenticated: false,
         showError: false
     }
 
@@ -51,7 +52,6 @@ export default class Register extends Component {
 
     handleBlur = (event) => {
         const { name } = event.target;
-        console.log('touch ' + name)
         this.setState({
             touch: {
                 ...this.state.touch,
@@ -65,7 +65,11 @@ export default class Register extends Component {
         if (this.isValid()) {
             authService.register(this.state.user)
                 .then(
-                    (user) => this.setState({ isRegistered: true }),
+                    (user) => {
+                        this.setState({ isAuthenticated: true }, () => {
+                          this.props.onUserChanged(user)
+                        })
+                      },
                     (error) => {
                         const { message, errors } = error.response.data;
                         this.setState({
@@ -90,9 +94,9 @@ export default class Register extends Component {
     }
 
     render() {
-        const { isRegistered, errors, user, touch, showError } = this.state;
-        if (isRegistered) {
-            return (<Redirect to="/login" />)
+        const { isAuthenticated, errors, user, touch, showError } = this.state;
+        if (isAuthenticated) {
+          return (<Redirect to="/" />)
         }
         return (
             <div className="auth-container">
@@ -110,3 +114,5 @@ export default class Register extends Component {
         )
     }
 }
+
+export default withAuthConsumer(Register)

@@ -12,10 +12,13 @@ class SingleProject extends Component {
     }
 
     getProject() {
-        this.props.handleSingleProject(this.props.match.params.id)
+        this.setState({
+            ...this.state,
+            singleProject: this.props.projects.filter(project => project.id === +this.props.match.params.id)[0]
+        })
     }
     render() {
-        const { singleProject } = this.props;
+        const { singleProject } = this.state
         return (
             <div className="project-container">
                 <section>
